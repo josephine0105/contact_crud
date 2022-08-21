@@ -1,0 +1,47 @@
+<mat-dialog-content class="mat-typography">
+  <h1 mat-dialog-title>Contact</h1>
+
+
+  <form [formGroup]="addContactForm">
+    <div class="form-group">
+      <label>Fullname</label>
+      <input type="text" formControlName="fname" class="form-control">
+      <div *ngIf="f['fname'].touched && f['fname'].invalid" class="alert alert-danger">
+        <div *ngIf="f['fname'].errors && f['fname'].errors['required']">Name is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" formControlName="email" class="form-control">
+      <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger">
+        <div *ngIf="f['email'].errors && f['email'].errors['required']">Email is required.
+        </div>
+        <div *ngIf="f['email'].errors && f['email'].errors['pattern']">Please, enter valid email address.
+        </div>
+      </div>
+
+    </div>
+    <div class="form-group">
+      <label>Comapany Name</label>
+      <input type="text" formControlName="cname" class="form-control">
+      <div *ngIf="f['cname'].touched && f['cname'].invalid" class="alert alert-danger">
+        <div *ngIf="f['cname'].errors && f['cname'].errors['required']">Company Name is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Phone Number</label>
+      <input type="tel" formControlName="phoneno" class="form-control" maxlength="10">
+      <div *ngIf="f['phoneno'].touched && f['phoneno'].invalid" class="alert alert-danger">
+        <div *ngIf="f['phoneno'].errors && f['phoneno'].errors['required']">Phone No is required.
+        </div>
+        <div *ngIf="f['phoneno'].errors && f['phoneno'].errors['pattern']">Please enter  number only
+        </div>
+      </div>
+    </div>
+    <button (click)="add()" class="btn btn-primary" [disabled]="!addContactForm.valid" *ngIf="!edit">Add</button>
+    <button (click)="editDetails()" class="btn btn-primary" [disabled]="!addContactForm.valid" *ngIf="edit">edit</button>
+    <button mat-dialog-close (click)="close()" class="btn btn">Cancel</button>
+  </form>
+</mat-dialog-content>
