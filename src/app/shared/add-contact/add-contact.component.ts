@@ -41,7 +41,7 @@ export class AddContactComponent implements OnInit {
 
 
 
-
+/**ADD DATA */
   add() {
     if (this.addContactForm.valid) {
       this.contactDetails.push(this.addContactForm.value)
@@ -52,11 +52,12 @@ export class AddContactComponent implements OnInit {
       return
     }
   }
-
+/**EDIT DATA */
   editDetails() {
     this.contactDetails.push(this.addContactForm.value)
     this.dialogRef.close(this.contactDetails);
   }
+  /**ERROR */
   get f() {
     return this.addContactForm.controls
   }
